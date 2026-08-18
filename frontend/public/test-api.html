@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Test API Registration</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        pre { background: #f5f5f5; padding: 15px; border-radius: 5px; }
+        button { padding: 10px 20px; background: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        button:hover { background: #0056b3; }
+        .success { color: green; }
+        .error { color: red; }
+    </style>
+</head>
+<body>
+    <h1>Test API d'Inscription</h1>
+    
+    <button onclick="testRegistration()">Tester l'inscription</button>
+    
+    <div id="result" style="margin-top: 20px;"></div>
+    
+    <script>
+    async function testRegistration() {
+        const testData = {
+            email: `test${Date.now()}@example.com`,
+            username: `user${Date.now()}`,
+            password: 'Test123!',
+            password2: 'Test123!',
+            first_name: 'Test',
+            last_name: 'User'
+        };
+
+        const resultDiv = document.getElementById('result');
+        resultDiv.innerHTML = '<p>Test en cours...</p>';
+        
+        try {
+            const response = await fetch('http://localhost:8000/api/auth/register/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(testData)
+            });
+            
+            const data = await response.json();
+            
+            let html = `<h3>Résultat du test</h3>`;
+            html += `<p><strong>Status:</strong> ${response.status}</p>`;
+            html += `<p><strong>Données envoyées:</strong></p>`;
+            html += `<pre>${JSON.stringify(testData, null, 2)}</pre>`;
+            html += `<p><strong>Réponse:</strong></p>`;
+            html += `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+            
+            if (response.ok) {
+                html = `<div class="success">${html}</div>`;
+            } else {
+                html = `<div class="error">${html}</div>`;
+            }
+            
+            resultDiv.innerHTML = html;
+            
+        } catch (error) {
+            resultDiv.innerHTML = `
+                <div class="error">
+                    <h3>Erreur</h3>
+                    <p><strong>Message:</strong> ${error.message}</p>
+                    <pre>${error.stack}</pre>
+                </div>
+            `;
+        }
+    }
+    </script>
+</body>
+</html>

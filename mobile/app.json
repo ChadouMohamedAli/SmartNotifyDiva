@@ -1,0 +1,28 @@
+{
+  "expo": {
+    "name": "mobile",
+    "slug": "mobile",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/notif.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/notif.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/notif.png",
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.anonymous.mobile"
+    },
+    "web": {
+      "favicon": "./assets/notif.png"
+    }
+  }
+}

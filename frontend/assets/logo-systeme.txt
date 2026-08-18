@@ -1,0 +1,3 @@
+// Placez ici le logo fourni pour le bon de commande
+// Ce fichier est juste une copie du logo fourni par l'utilisateur pour l'utiliser dans le composant React
+// Copiez ce fichier dans le dossier assets de votre projet et renommez-le en logo-systeme.png

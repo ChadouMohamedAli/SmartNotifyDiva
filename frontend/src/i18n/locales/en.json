@@ -1,0 +1,19 @@
+{
+  "dashboard": "Dashboard",
+  "Dashboard": "Dashboard",
+  "alertes": "My Alerts",
+  "Mes Alertes": "My Alerts",
+  "notifications": "Notifications",
+  "Notifications": "Notifications",
+  "stock": "Stock",
+  "Stock": "Stock",
+  "Mouvements": "Movements",
+  "Commandes": "Orders",
+  "Catégories": "Categories",
+  "Fournisseurs": "Suppliers",
+  "Entrepôts": "Warehouses",
+  "Facturation": "Invoicing",
+  "ERP Modules": "ERP Modules",
+  "Admin Panel": "Admin Panel",
+  "Employés": "Employees"
+}

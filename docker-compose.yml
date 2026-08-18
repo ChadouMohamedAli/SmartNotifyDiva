@@ -1,0 +1,57 @@
+version: '3.9'
+
+services:
+
+  postgres:
+    image: postgres:17
+    container_name: smartnotify-postgres
+
+    environment:
+      POSTGRES_DB: smartalerte_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgresql
+
+    ports:
+      - "5432:5432"
+
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  mailpit:
+    image: axllent/mailpit
+    container_name: smartnotify-mailpit
+
+    ports:
+      - "1025:1025"
+      - "8025:8025"
+
+  backend:
+    build:
+      context: ./backend
+
+    container_name: smartnotify-backend
+
+    env_file:
+      - ./backend/.env
+
+    ports:
+      - "8000:8000"
+
+    depends_on:
+      - postgres
+      - mailpit
+
+  frontend:
+    build:
+      context: ./frontend
+
+    container_name: smartnotify-frontend
+
+    ports:
+      - "3000:3000"
+
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:
